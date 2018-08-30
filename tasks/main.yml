@@ -10,7 +10,7 @@
 - name: Satellite | Capsule Install | Include Tasks for Gathering Facts
   include_tasks: gather-facts.yml
 
-- name: Satellite | Capsule Install | Include Tasks for Prequisites
+- name: Satellite | Capsule Install | Include Tasks for Prerequisites
   include_tasks: prerequisites.yml
 
 - name: Satellite | Capsule Install | Include Tasks for Generating Capsule Certificate Bundle
