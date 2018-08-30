@@ -1,0 +1,20 @@
+---
+
+- name: Satellite | Capsule Install | Check Required Variables are Defined 
+  assert:
+    that:
+      - "satellite_fqdn is defined and ( satellite_fqdn | trim ) != ''"
+      - "satellite_hammer_user is defined and ( satellite_hammer_user | trim ) != ''"
+      - "satellite_hammer_password is defined and ( satellite_hammer_password | trim ) != ''"
+
+- name: Satellite | Capsule Install | Include Tasks for Gathering Facts
+  include_tasks: gather-facts.yml
+
+- name: Satellite | Capsule Install | Include Tasks for Prerequisites
+  include_tasks: prerequisites.yml
+
+- name: Satellite | Capsule Install | Include Tasks for Generating Capsule Certificate Bundle
+  include_tasks: certificate-bundle.yml
+
+- name: Satellite | Capsule Install | Include Tasks for Installing Capsule Server
+  include_tasks: capsule-install.yml
