@@ -1,18 +1,7 @@
 ---
-
-satellite_fqdn: ''
-satellite_hammer_user: ''
-satellite_hammer_password: ''
-satellite_capsule_server_certs_dir: ''
-satellite_capsule_server_cert_archive: ''
-satellite_server_host: ''
-satellite_capsule_server_certs_dir: ''
-satellite_oauth_consumer_key: ''
-satellite_oauth_consumer_secret: ''
-satellite_pulp_oauth_secret: ''
-satellite_capsule_server_cert_archive: ''
-satellite_installer_enable_remote_discovery: ''
-satellite_installer_enable_tftp: ''
-satellite_installer_tftp_parameters: ''
-satellite_installer_enable_remote_execution_ssh: ''
-satellite_installer_remote_execution_ssh_parameters: ''
+satellite_capsule_server_certs_dir: '/root/capsule_cert/'
+satellite_capsule_server_cert_archive: "{{ satellite_capsule_server_certs_dir }}/capsule_certs.tar"
+satellite_oauth_consumer_key: "{{ satellite_capsule_server_certs_dir }}/capsule_cert_key.pem"
+satellite_installer_enable_remote_discovery: '/var/tmp'
+satellite_installer_enable_tftp: false
+satellite_installer_enable_remote_execution_ssh: false
