@@ -1,10 +1,10 @@
 ---
 
-- name: Satelllite | Caspule Install | Prerequisites | Registery with Satellite Server
+- name: Satellite | Capsule Install | Prerequisites | Registery with Satellite Server
   include_role:
     name: satellite_register
 
-- name: Satelllite | Caspule Install | Prerequisites | Include tasks for Enabling Repositories
+- name: Satellite | Capsule Install | Prerequisites | Include tasks for Enabling Repositories
   include_tasks: tasks/repositories.yml
   vars:
     repositories:
@@ -13,7 +13,7 @@
       - rhel-server-rhscl-7-rpms
       - rhel-7-server-satellite-tools-6.3-rpms
 
-- name: Satelllite | Caspule Install | Prerequisites | Install packages
+- name: Satellite | Capsule Install | Prerequisites | Install packages
   package:
     name: "{{ item }}"
     state: latest
@@ -22,7 +22,7 @@
     - firewalld
     - 'satellite-capsule'
 
-- name: Satelllite | Caspule Install | Prerequisites | Enable services
+- name: Satellite | Capsule Install | Prerequisites | Enable services
   service:
     name: "{{ item }}"
     state: started
@@ -31,7 +31,7 @@
     - chronyd
     - firewalld
 
-- name: Satelllite | Caspule Install | Prerequisites | Configure Firewall Ports
+- name: Satellite | Capsule Install | Prerequisites | Configure Firewall Ports
   firewalld:
     port: "{{ item }}"
     permanent: true
