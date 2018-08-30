@@ -1,4 +1,5 @@
 ---
+
 - name: Satelllite | Caspule Install | Prerequisites | Registery with Satellite Server
   include_role:
     name: satellite_register

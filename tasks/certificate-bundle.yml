@@ -13,9 +13,8 @@
         ssh_key_file: .ssh/id_rsa
     
     - name: Satelllite | Capsule | Crtificate Bundle | Get Satellite Server root user public key
-      command:
-        cmd: "cat /root/.ssh/id_rsa.pub"
-      changed_when: False
+      slurp:
+        path: "/root/.ssh/id_rsa.pub"
       register: satellite_server_root_public_key
   delegate_to: "{{ satellite_server_host }}"
   run_once: true
@@ -24,7 +23,7 @@
   authorized_key:
     user: root
     state: present
-    key: "{{ satellite_server_root_public_key.stdout }}"
+    key: "{{ satellite_server_root_public_key.content | b64decode }}"
 
 - name: Satelllite | Capsule | Crtificate Bundle | Create Capsule Certificates Directory on Capsule Server
   file:
@@ -33,10 +32,10 @@
     mode: 0700
 
 - name: Satelllite | Capsule | Crtificate Bundle | Create the certificates archive on Satellite Server
-  command: >
+  command: >-
     capsule-certs-generate
-      --foreman-proxy-fqdn '{{ ansible_fqdn }}'
-      --certs-tar '{{ satellite_capsule_server_cert_archive }}'
+      --foreman-proxy-fqdn {{ ansible_fqdn | quote }}
+      --certs-tar {{ satellite_capsule_server_cert_archive | quote }}
       --certs-update-all
   args:
     chdir: /root

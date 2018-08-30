@@ -1,0 +1,15 @@
+---
+
+- name: Satellite | Capsule | Gather facts about environment
+  hosts: all
+  gather_facts: yes
+
+- name: Satelllite | Capsule | Caspule Install
+  hosts: satellite-capsule-servers
+  gather_facts: False
+  vars:
+    satellite_fqdn: 'my_satellite_fqdn.company.example.com'
+    satellite_hammer_user: 'admin'  # should be vaulted
+    satellite_hammer_password: 'SECRET'  # should be vaulted
+  roles:
+    - ansible-role-redhat_satellite6_capsule_installation 

@@ -1,4 +1,5 @@
 ---
+
 - name: Satelllite | Caspule Install | Gather Facts | Set Satellite Server FQDN
   set_fact:
     satellite_server_host: "{{ hostvars[groups['satellite-servers'][0]]['ansible_fqdn'] }}"
@@ -32,10 +33,6 @@
 - name: Satelllite | Caspule Install | Gather Facts | Set Pulp oAuth secret Facts
   set_fact:
     satellite_pulp_oauth_secret: "{{ pulp_oauth_secret_result.stdout }}"
-
-- name: Satelllite | Caspule Install | Gather Facts | Set Capsule Certificates Directory Facts
-  set_fact:
-    satellite_capsule_server_certs_dir: "/root/ansible/capsule-certs"
 
 - name: Satelllite | Caspule Install | Gather Facts | Set Capsule Certificate Facts
   set_fact:

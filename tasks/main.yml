@@ -6,9 +6,6 @@
       - "satellite_fqdn is defined and ( satellite_fqdn | trim ) != ''"
       - "satellite_hammer_user is defined and ( satellite_hammer_user | trim ) != ''"
       - "satellite_hammer_password is defined and ( satellite_hammer_password | trim ) != ''"
-      - "satellite_server_host is defined and ( satellite_server_host | trim ) != ''"
-      - "satellite_oauth_consumer_secret is defined and ( satellite_oauth_consumer_secret | trim ) != ''"
-      - "satellite_pulp_oauth_secret is defined and ( satellite_pulp_oauth_secret | trim ) != ''"
 
 - name: Satellite | Capsule Install | Include Tasks for Gathering Facts
   include_tasks: gather-facts.yml
